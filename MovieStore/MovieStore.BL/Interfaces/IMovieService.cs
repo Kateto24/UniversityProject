@@ -11,5 +11,7 @@ namespace MovieStore.BL.Interfaces
         Movie? GetMovieById(int id);
 
         void DeleteMovie(int id);
+
+        void UpdateMovie(Movie movie);
     }
 }
