@@ -1,4 +1,4 @@
-﻿using MovieStore.Models.DTO;
+﻿using MovieStore.Models.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace MovieStore.Models.Responses
 {
-    public class GetDetailedMovieResponse
+    public class GetFullMovieDetailsResponse
     {
-        public Movie Movie { get; set; }
-
-        public List<Actor> Actors { get; set; }
+        IEnumerable<MovieView> Movies { get; set; } = [];
     }
 }
