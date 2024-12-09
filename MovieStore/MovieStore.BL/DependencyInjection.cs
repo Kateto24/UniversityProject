@@ -9,7 +9,8 @@ namespace MovieStore.BL
     {
         public static IServiceCollection RegisterBusinessLayer(this IServiceCollection services)
         {
-            services.AddSingleton<IMovieService, MovieService>();
+            services.AddSingleton<IMovieService, MovieService>()
+                    .AddSingleton<IMovieBLService, MovieBLService>();
 
             return services;
         }
