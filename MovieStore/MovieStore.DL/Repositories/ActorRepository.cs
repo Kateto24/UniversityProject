@@ -22,7 +22,7 @@ namespace MovieStore.DL.Repositories
         }
 
         public Actor? GetActorById(int id)
-        {
+        { 
             return InMemoryDb.Actors.FirstOrDefault(a => a.Id == id);
         }
 
@@ -35,9 +35,9 @@ namespace MovieStore.DL.Repositories
 
         public void Update(Actor actor)
         {
-            var result = InMemoryDb.Movies.FirstOrDefault(m => m.Id == actor.Id);
+            var result = InMemoryDb.Actors.FirstOrDefault(m => m.Id == actor.Id);
 
-            result.Title = actor.Name;
+            result.Name = actor.Name;
             
         }
     }

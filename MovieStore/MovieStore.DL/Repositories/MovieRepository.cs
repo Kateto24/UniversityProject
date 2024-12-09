@@ -4,7 +4,8 @@ using MovieStore.Models.DTO;
 
 namespace MovieStore.DL.Repositories
 {
-    internal class MovieRepository : IMovieRepository
+    [Obsolete]
+    internal class MongoRepository : IMovieRepository
     {
 
         public List<Movie> GetAllMovies()
@@ -13,16 +14,16 @@ namespace MovieStore.DL.Repositories
         }
 
         public void AddMovie(Movie movie)
-        {
+        { 
             InMemoryDb.Movies.Add(movie);
         }
 
-        public Movie? GetMovieById(int id)
+        public Movie? GetMovieById(string id)
         {
             return InMemoryDb.Movies.FirstOrDefault(m => m.Id == id);
         }
 
-        public void DeleteMovie(int id)
+        public void DeleteMovie(string id)
         {
             var movie = InMemoryDb.Movies.FirstOrDefault(m => m.Id == id);
             
@@ -37,6 +38,6 @@ namespace MovieStore.DL.Repositories
             result.Year = movie.Year;
         }
 
-        
+       
     }
 }
