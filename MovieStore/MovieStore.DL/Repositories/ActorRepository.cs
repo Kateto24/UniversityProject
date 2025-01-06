@@ -9,36 +9,36 @@ using System.Threading.Tasks;
 
 namespace MovieStore.DL.Repositories
 {
-    internal class ActorRepository : IActorRepository
-    {
-        public List<Actor> GetAllActors()
-        {
-            return InMemoryDb.Actors;
-        }
+    //internal class ActorRepository : IActorRepository
+    //{
+    //    public List<Actor> GetAllActors()
+    //    {
+    //        return InMemoryDb.Actors;
+    //    }
 
-        public void AddActor(Actor actor)
-        {
-            InMemoryDb.Actors.Add(actor);
-        }
+    //    public void AddActor(Actor actor)
+    //    {
+    //        InMemoryDb.Actors.Add(actor);
+    //    }
 
-        public Actor? GetActorById(int id)
-        {
-            return InMemoryDb.Actors.FirstOrDefault(a => a.Id == id);
-        }
+    //    public Actor? GetActorById(string id)
+    //    { 
+    //        return InMemoryDb.Actors.FirstOrDefault(a => a.Id == id);
+    //    }
 
-        public void DeleteActor(int id)
-        {
-            var actor = InMemoryDb.Actors.FirstOrDefault(a => a.Id == id);
+    //    public void DeleteActor(string id)
+    //    {
+    //        var actor = InMemoryDb.Actors.FirstOrDefault(a => a.Id == id);
 
-            InMemoryDb.Actors.Remove(actor);
-        }
+    //        InMemoryDb.Actors.Remove(actor);
+    //    }
 
-        public void Update(Actor actor)
-        {
-            var result = InMemoryDb.Movies.FirstOrDefault(m => m.Id == actor.Id);
+    //    public void Update(Actor actor)
+    //    {
+    //        var result = InMemoryDb.Actors.FirstOrDefault(m => m.Id == actor.Id);
 
-            result.Title = actor.Name;
+    //        result.Name = actor.Name;
             
-        }
-    }
+    //    }
+    //}
 }

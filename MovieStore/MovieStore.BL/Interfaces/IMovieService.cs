@@ -8,9 +8,9 @@ namespace MovieStore.BL.Interfaces
 
         void AddMovie(Movie movie);
 
-        Movie? GetMovieById(int id);
+        Movie? GetMovieById(string id);
 
-        void DeleteMovie(int id);
+        void DeleteMovie(string id);
 
         void UpdateMovie(Movie movie);
     }
