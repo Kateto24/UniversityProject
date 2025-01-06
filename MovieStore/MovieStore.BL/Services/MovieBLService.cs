@@ -35,6 +35,7 @@ namespace MovieStore.BL.Services
                     MovieId = movie.Id,
                     MovieTitle = movie.Title,
                     MovieYear = movie.Year
+                   
                 };
 
                 foreach (var id in movie.Actors)

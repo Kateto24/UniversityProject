@@ -11,10 +11,10 @@ namespace MovieStore.DL.Interfaces
     {
         List<Actor> GetAllActors();
         void AddActor(Actor actor);
-        Actor? GetActorById(int id);
+        Actor? GetActorById(string id);
         //void AddMovie(Movie movie);
         //void UpdateMovie(Movie movie);
-        void DeleteActor(int id);
+        void DeleteActor(string id);
         void Update(Actor actor);
     }
 }

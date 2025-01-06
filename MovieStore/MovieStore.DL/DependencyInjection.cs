@@ -11,7 +11,7 @@ namespace MovieStore.DL
         {
             services
                 .AddSingleton<IMovieRepository, MovieMongoRepository>()
-                .AddSingleton<IActorRepository, ActorRepository>();
+                .AddSingleton<IActorRepository, ActorMongoRepository>();
         }
     }
 }

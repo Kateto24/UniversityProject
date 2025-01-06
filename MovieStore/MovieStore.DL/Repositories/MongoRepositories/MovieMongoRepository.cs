@@ -17,9 +17,9 @@ namespace MovieStore.DL.Repositories.MongoRepositories
 
         //private readonly IOptionsMonitor<MongoDbConfigurations> _mongoConfig;
         private readonly IMongoCollection<Movie> _movies;
-        private readonly ILogger<MongoRepository> _logger;
+        private readonly ILogger<MovieMongoRepository> _logger;
 
-        public MovieMongoRepository(IOptionsMonitor<MongoDbConfigurations> mongoConfig)
+        public MovieMongoRepository(IOptionsMonitor<MongoDbConfigurations> mongoConfig, ILogger<MovieMongoRepository> logger)
         {
             //mongoConfig = mongoConfig;
 
@@ -27,12 +27,13 @@ namespace MovieStore.DL.Repositories.MongoRepositories
 
             var database = client.GetDatabase(mongoConfig.CurrentValue.DatabaseName);
 
-            _movies = database.GetCollection<Movie>(mongoConfig.CurrentValue.DatabaseName);
+            _movies = database.GetCollection<Movie>($"{nameof(Movie)}");
+            _logger = logger;
         }
 
         //public MovieMongoRepository()
         //{
-            
+
         //}
 
         public void AddMovie(Movie movie)
