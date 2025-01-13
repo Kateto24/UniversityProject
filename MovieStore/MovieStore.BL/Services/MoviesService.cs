@@ -4,11 +4,12 @@ using MovieStore.Models.DTO;
 
 namespace MovieStore.BL.Services
 {
-    public class MovieService : IMovieService
+    public class MoviesService : IMovieService
     {
         private readonly IMovieRepository _movieRepository;
+        private readonly IActorRepository _actorRepository;
 
-        public MovieService(IMovieRepository movieRepository)
+        public MoviesService(IMovieRepository movieRepository)
         {
             _movieRepository = movieRepository;
         }
@@ -20,6 +21,18 @@ namespace MovieStore.BL.Services
 
         public void AddMovie(Movie movie)
         {
+            if (movie is null) return;
+
+            foreach(var movieActor in movie.Actors)
+            {
+                var actor = _actorRepository.GetActorById(movieActor);
+
+                if(actor is null)
+                {
+                    throw new Exception($"Actor with id {movieActor} does not exist");
+                }
+            }
+
             _movieRepository.AddMovie(movie);
         }
 
