@@ -1,6 +1,6 @@
-﻿using MovieStore.Models.Configurations;
+﻿using FootballClubs.Models.Configurations;
 
-namespace MovieStore.ServicesExtensions
+namespace FootballClubs.ServicesExtensions
 {
     public static class ServiceConfigurationsExtensions
     {

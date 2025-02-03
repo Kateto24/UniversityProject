@@ -1,16 +1,16 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Mapster;
-using MovieStore.BL;
-using MovieStore.BL.Interfaces;
-using MovieStore.BL.Services;
-using MovieStore.MapsterConfig;
-using MovieStore.ServicesExtensions;
-using MovieStore.Validators;
+using FootballClubs.BL;
+using FootballClubs.BL.Interfaces;
+using FootballClubs.BL.Services;
+using FootballClubs.MapsterConfig;
+using FootballClubs.ServicesExtensions;
+using FootballClubs.Validators;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 
-namespace MovieStore
+namespace FootballClubs
 {
     public class Program
     {

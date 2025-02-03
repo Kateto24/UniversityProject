@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieStore.Models.DTO
+namespace FootballClubs.Models.DTO
 {
-    public class Actor
+    public class Player
     {
         public string Id { get; set; }
 

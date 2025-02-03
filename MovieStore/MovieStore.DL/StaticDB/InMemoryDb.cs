@@ -1,50 +1,50 @@
-﻿using MovieStore.Models.DTO;
+﻿using FootballClubs.Models.DTO;
 
-namespace MovieStore.DL.StaticDB
+namespace FootballClubs.DL.StaticDB
 {
     //internal static class InMemoryDb
     //{
-    //    internal static List<Actor> Actors = new List<Actor>
+    //    internal static List<Player> Players = new List<Player>
     //    {
-    //        new Actor
+    //        new Player
     //        {
-    //            Id = 1,
-    //            Name = "Silvester Stalone"
+    //            Id = 19,
+    //            Name = "Lamine Yamal"
     //        },
-    //        new Actor
+    //        new Player
     //        {
-    //            Id = 2,
-    //            Name = "Jorge"
+    //            Id = 8,
+    //            Name = "Pedri"
     //        }
     //    };
 
-    //    internal static List<Movie> Movies = new List<Movie>
+    //    internal static List<Club> Clubs = new List<Club>
     //    {
-    //        new Movie
+    //        new Club
     //        {
     //            Id = "1",
-    //            Title = "The Shawshank Redemption",
-    //            Year = 1994,
+    //            Title = "Barcelona",
+    //            Year = 1899,
     //            Actors = new List<int>
     //            {
     //                1
     //            }
     //        },
-    //        new Movie
+    //        new Club
     //        {
     //            Id = "2",
-    //            Title = "The Godfather",
-    //            Year = 1972,
+    //            Title = "Inter",
+    //            Year = 1908,
     //            Actors = new List<int>
     //            {
     //                2
     //            }
     //        },
-    //        new Movie
+    //        new Club
     //        {
     //            Id = "3",
-    //            Title = "The Dark Knight",
-    //            Year = 2008
+    //            Title = "Juventus",
+    //            Year = 1897
     //        },
     //    };
     //}

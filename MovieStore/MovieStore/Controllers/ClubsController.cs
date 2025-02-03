@@ -1,23 +1,23 @@
 using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
-using MovieStore.BL.Interfaces;
-using MovieStore.DL.Interfaces;
-using MovieStore.Models.DTO;
-using MovieStore.Models.Requests;
+using FootballClubs.BL.Interfaces;
+using FootballClubs.DL.Interfaces;
+using FootballClubs.Models.DTO;
+using FootballClubs.Models.Requests;
 
-namespace MovieStore.Controllers
+namespace FootballClubs.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class MoviesController : ControllerBase
+    public class ClubsController : ControllerBase
     {
-        private readonly IMovieService _movieService;
+        private readonly IClubService _clubService;
         private readonly IMapper _mapper;
-        private readonly ILogger<MoviesController> _logger;
+        private readonly ILogger<ClubsController> _logger;
 
-        public MoviesController(IMovieService movieService, IMapper mapper, ILogger<MoviesController> logger)
+        public ClubsController(IClubService clubService, IMapper mapper, ILogger<ClubsController> logger)
         {
-            _movieService = movieService;
+            _clubService = clubService;
             _mapper = mapper;
             _logger = logger;
         }
@@ -26,34 +26,34 @@ namespace MovieStore.Controllers
         [HttpGet("GetAll")]
         public IActionResult Get()
         {
-            var result = _movieService.GetAllMovies();
+            var result = _clubService.GetAllClubs();
 
             if (result == null || result.Count == 0)
             {
-                return NotFound("No movies found");
+                return NotFound("No clubs found");
             }
 
             return Ok(result);
         }
 
         [HttpPost("Add")]
-        public IActionResult Add(AddMovieRequest movie)
+        public IActionResult Add(AddClubRequest club)
         {
             try
             {
-                var movieDto = _mapper.Map<Movie>(movie);
+                var clubDto = _mapper.Map<Club>(club);
 
-                if (movieDto == null)
+                if (clubDto == null)
                 {
-                    return BadRequest("Can't convert movie");
+                    return BadRequest("Can't convert club");
                 }
 
-                _movieService.AddMovie(movieDto);
+                _clubService.AddClub(clubDto);
                 return Ok();
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex,$"Error adding movie with");
+                _logger.LogError(ex,$"Error adding club with");
 
                 return BadRequest(ex.Message);
             } 
@@ -63,36 +63,36 @@ namespace MovieStore.Controllers
         }
 
         [HttpPost("Update")]
-        public void Update(UpdateMovieRequest movie)
+        public void Update(UpdateClubRequest club)
         {
-            var movieDto = _mapper.Map<Movie>(movie);
-            _movieService.UpdateMovie(movieDto);
+            var clubDto = _mapper.Map<Club>(club);
+            _clubService.UpdateClub(clubDto);
         }
 
         [HttpGet("GetById")]
-        [ProducesResponseType<Movie>(StatusCodes.Status200OK)]
-        [ProducesResponseType<Movie>(StatusCodes.Status404NotFound)]
-        [ProducesResponseType<Movie>(StatusCodes.Status400BadRequest)]
-        public IActionResult GetMovieById(string id)
+        [ProducesResponseType<Club>(StatusCodes.Status200OK)]
+        [ProducesResponseType<Club>(StatusCodes.Status404NotFound)]
+        [ProducesResponseType<Club>(StatusCodes.Status400BadRequest)]
+        public IActionResult GetClubById(string id)
         {
-            _logger.LogInformation($"Getting movie with id: {id}");
+            _logger.LogInformation($"Getting club with id: {id}");
             if (string.IsNullOrEmpty(id))
             {
                 return BadRequest("Id must be greater than 0");
             }
             
-            var result = _movieService.GetMovieById(id);
+            var result = _clubService.GetClubById(id);
 
             if (result == null)
             {
-                return NotFound($"Movie with ID:{id} not found");
+                return NotFound($"Club with ID:{id} not found");
             }
 
             return Ok(result);
         }
 
         [HttpDelete("DeleteById")]
-        public IActionResult DeleteMovie(int id)
+        public IActionResult DeleteClub(int id)
         {
             if (id <= 0)
             {

@@ -1,8 +1,8 @@
 ﻿
 
-namespace MovieStore.Models.Requests
+namespace FootballClubs.Models.Requests
 {
-    public class UpdateMovieRequest
+    public class UpdateClubRequest
     {
         public int Id { get; set; }
 

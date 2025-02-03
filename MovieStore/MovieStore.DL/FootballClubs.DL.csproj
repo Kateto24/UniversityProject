@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MovieStore.Models\MovieStore.Models.csproj" />
+    <ProjectReference Include="..\FootballClubs.Models\FootballClubs.Models.csproj" />
   </ItemGroup>
 
 </Project>

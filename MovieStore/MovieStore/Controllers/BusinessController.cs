@@ -1,20 +1,20 @@
 ﻿using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
-using MovieStore.BL.Interfaces;
+using FootballClubs.BL.Interfaces;
 
-namespace MovieStore.Controllers
+namespace FootballClubs.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class BusinessController : ControllerBase
     {
-        private readonly IMovieBLService _movieService;
+        private readonly IFootballClubsBLService _clubService;
         private readonly IMapper _mapper;
         private readonly ILogger<BusinessController> _logger;
 
-        public BusinessController(IMovieBLService movieService, IMapper mapper, ILogger<BusinessController> logger)
+        public BusinessController(IFootballClubsBLService movieService, IMapper mapper, ILogger<BusinessController> logger)
         {
-            _movieService = movieService;
+            _clubService = movieService;
             _mapper = mapper;
             _logger = logger;
         }
@@ -23,7 +23,7 @@ namespace MovieStore.Controllers
         [HttpGet("GetAll")]
         public IActionResult Get()
         {
-            var result = _movieService.GetDetailedMovies();
+            var result = _clubService.GetDetailedClubs();
 
             if (result == null/* || result.Count == 0*/)
             {

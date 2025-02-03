@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieStore.Models.Configurations
+namespace FootballClubs.Models.Configurations
 {
     public class MongoDbConfigurations
     {

@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MovieStore.BL\MovieStore.BL.csproj" />
+    <ProjectReference Include="..\FootballClubs.BL\FootballClubs.BL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,25 +1,25 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using MovieStore.DL.Interfaces;
-using MovieStore.Models.Configurations;
-using MovieStore.Models.DTO;
+using FootballClubs.DL.Interfaces;
+using FootballClubs.Models.Configurations;
+using FootballClubs.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieStore.DL.Repositories.MongoRepositories
+namespace FootballClubs.DL.Repositories.MongoRepositories
 {
-    public class MovieMongoRepository : IMovieRepository
+    public class ClubMongoRepository : IClubRepository
     {
 
         //private readonly IOptionsMonitor<MongoDbConfigurations> _mongoConfig;
-        private readonly IMongoCollection<Movie> _movies;
-        private readonly ILogger<MovieMongoRepository> _logger;
+        private readonly IMongoCollection<Club> _clubs;
+        private readonly ILogger<ClubMongoRepository> _logger;
 
-        public MovieMongoRepository(IOptionsMonitor<MongoDbConfigurations> mongoConfig, ILogger<MovieMongoRepository> logger)
+        public ClubMongoRepository(IOptionsMonitor<MongoDbConfigurations> mongoConfig, ILogger<ClubMongoRepository> logger)
         {
             //mongoConfig = mongoConfig;
 
@@ -27,7 +27,7 @@ namespace MovieStore.DL.Repositories.MongoRepositories
 
             var database = client.GetDatabase(mongoConfig.CurrentValue.DatabaseName);
 
-            _movies = database.GetCollection<Movie>($"{nameof(Movie)}");
+            _clubs = database.GetCollection<Club>($"{nameof(Club)}");
             _logger = logger;
         }
 
@@ -36,38 +36,38 @@ namespace MovieStore.DL.Repositories.MongoRepositories
 
         //}
 
-        public void AddMovie(Movie movie)
+        public void AddClub(Club club)
         {
-            movie.Id = Guid.NewGuid().ToString();
-            _movies.InsertOne(movie);
+            club.Id = Guid.NewGuid().ToString();
+            _clubs.InsertOne(club);
         }
 
-        public void DeleteMovie(string id)
+        public void DeleteClub(string id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Movie> GetAllMovies()
+        public List<Club> GetAllClubs()
         {
-            return _movies.Find(movie => true).ToList();
+            return _clubs.Find(club => true).ToList();
         }
 
-        public Movie? GetMovieById(string id)
+        public Club? GetClubById(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return null;
             }
 
-            return _movies.Find(movie => movie.Id == id).FirstOrDefault();
+            return _clubs.Find(club => club.Id == id).FirstOrDefault();
         }
 
-        public Movie? GetMovieById(int id)
+        public Club? GetClubById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Movie movie)
+        public void Update(Club club)
         {
             throw new NotImplementedException();
         }
