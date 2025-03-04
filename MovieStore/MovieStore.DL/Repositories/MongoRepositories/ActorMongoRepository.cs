@@ -31,23 +31,23 @@ namespace MovieStore.DL.Repositories.MongoRepositories
 
         //}
 
-        public void AddActor(Actor actor)
+        public async Task AddActor(Actor actor)
         {
             actor.Id = Guid.NewGuid().ToString();
             _actor.InsertOne(actor);
         }
 
-        public void DeleteActor(string id)
+        public async Task DeleteActor(string id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Actor> GetAllActors()
+        public async Task<List<Actor>> GetAllActors()
         {
             return _actor.Find(actor => true).ToList();
         }
 
-        public Actor? GetActorById(string id)
+        public async Task<Actor?> GetActorById(string id)
         {
             //if (string.IsNullOrEmpty(id))
             //{
@@ -57,13 +57,13 @@ namespace MovieStore.DL.Repositories.MongoRepositories
             return _actor.Find(actor => actor.Id == id).FirstOrDefault();
         }
 
-        public List<Actor> GetActorById(IEnumerable<string> actors)
+        public async Task<List<Actor>> GetActorById(IEnumerable<string> actors)
         {
             //var filter = Builders<BsonDocument>.Filter.In("_id", actor);
             return _actor.Find(a => actors.Contains(a.Id)).ToList();
         }
 
-        public void Update(Actor actor)
+        public async Task Update(Actor actor)
         {
             throw new NotImplementedException();
         }

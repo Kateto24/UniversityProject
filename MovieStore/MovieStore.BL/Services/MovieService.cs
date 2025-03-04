@@ -13,24 +13,26 @@ namespace MovieStore.BL.Services
             _movieRepository = movieRepository;
         }
 
-        public List<Movie> GetAllMovies()
+        public async Task<List<Movie>> GetAllMovies()
         {
-            return _movieRepository.GetAllMovies();
+            return await _movieRepository.GetAllMovies();
         }
 
-        public void AddMovie(Movie movie)
+        public async Task AddMovie(Movie movie)
         {
             _movieRepository.AddMovie(movie);
         }
 
-        public Movie? GetMovieById(string id)
+        public async Task<Movie?> GetMovieById(string id)
         {
-            return _movieRepository.GetMovieById(id);
+            return await _movieRepository.GetMovieById(id);
         }
 
-        public void DeleteMovie(string id)
+        public async Task DeleteMovie(string id)
         {
-            _movieRepository.DeleteMovie(id);
+            if (!string.IsNullOrEmpty(id)) return;
+            
+            await _movieRepository.DeleteMovie(id);
         }
 
         public void UpdateMovie(Movie movie)

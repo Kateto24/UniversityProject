@@ -24,7 +24,7 @@ namespace MovieStore.Controllers
 
 
         [HttpGet("GetAll")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
             var result = _movieService.GetAllMovies();
 
@@ -37,7 +37,7 @@ namespace MovieStore.Controllers
         }
 
         [HttpPost("Add")]
-        public IActionResult Add(AddMovieRequest movie)
+        public async Task<IActionResult> Add(AddMovieRequest movie)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace MovieStore.Controllers
                     return BadRequest("Can't convert movie");
                 }
 
-                _movieService.AddMovie(movieDto);
+                await _movieService.AddMovie(movieDto);
                 return Ok();
             }
             catch (System.Exception ex)

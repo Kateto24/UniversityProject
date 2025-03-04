@@ -36,30 +36,41 @@ namespace MovieStore.DL.Repositories.MongoRepositories
 
         //}
 
-        public void AddMovie(Movie movie)
+        public async Task AddMovie(Movie movie)
         {
-            movie.Id = Guid.NewGuid().ToString();
-            _movies.InsertOne(movie);
+            try
+            {
+                movie.Id = Guid.NewGuid().ToString();
+                await _movies.InsertOneAsync(movie);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
         }
 
-        public void DeleteMovie(string id)
+        public async Task DeleteMovie(string id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Movie> GetAllMovies()
+        public async Task<List<Movie>> GetAllMovies()
         {
-            return _movies.Find(movie => true).ToList();
+            var result = await _movies.FindAsync(movie => true);
+            
+            return result.ToList();
         }
 
-        public Movie? GetMovieById(string id)
+        public async Task<Movie?> GetMovieById(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return null;
             }
 
-            return _movies.Find(movie => movie.Id == id).FirstOrDefault();
+            var result = await _movies.FindAsync(movie => movie.Id == id);
+            return result.FirstOrDefault();
         }
 
         public Movie? GetMovieById(int id)

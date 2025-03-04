@@ -4,14 +4,14 @@ namespace MovieStore.BL.Interfaces
 {
     public interface IMovieService
     {
-        List<Movie> GetAllMovies();
+        Task<List<Movie>> GetAllMovies();
 
-        void AddMovie(Movie movie);
+        Task AddMovie(Movie movie);
 
-        Movie? GetMovieById(string id);
+        Task<List<Movie?>> GetMovieById(string id);
 
-        void DeleteMovie(string id);
+        Task DeleteMovie(string id);
 
-        void UpdateMovie(Movie movie);
+        Task UpdateMovie(Movie movie);
     }
 }

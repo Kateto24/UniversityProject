@@ -21,12 +21,12 @@ namespace MovieStore.BL.Services
             _actorRepository = actorRepository;
         }
 
-        public IEnumerable<MovieView> GetDetailedMovies()
+        public async Task<IEnumerable<MovieView>> GetDetailedMovies()
         {
             var result = new List<MovieView>();
 
-            var movies = _movieRepository.GetAllMovies();
-            foreach (var movie in movies) 
+            var movies = await _movieRepository.GetAllMovies();
+            foreach (var movie in movies)
             {
                 var actors = new List<Actor>(movie.Actors.Count());
 
@@ -35,15 +35,25 @@ namespace MovieStore.BL.Services
                     MovieId = movie.Id,
                     MovieTitle = movie.Title,
                     MovieYear = movie.Year
-                   
+
                 };
 
-                foreach (var id in movie.Actors)
+                var tasks = movie.Actors.Select(id => _actorRepository.GetActorById(id));
+
+                //foreach (var id in movie.Actors)
+                //{
+                //    var actorDto = await _actorRepository.GetActorById(id);
+                //    actors.Add(actorDto);
+                //}
+
+                //movieView.Actors = ;
+                var response = await Task.WhenAll(tasks);
+
+                if (response != null && response.Any())
                 {
-                    var actorDto = _actorRepository.GetActorById(id);
-                    actors.Add(actorDto);
+                    movieView.Actors = response.ToList();
                 }
-                movieView.Actors = actors;
+                
 
                 result.Add(movieView);
             }

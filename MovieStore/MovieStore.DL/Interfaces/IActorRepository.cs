@@ -9,12 +9,12 @@ namespace MovieStore.DL.Interfaces
 {
     public interface IActorRepository
     {
-        List<Actor> GetAllActors();
-        void AddActor(Actor actor);
-        Actor? GetActorById(string id);
+        Task<List<Actor>> GetAllActors();
+        Task AddActor(Actor actor);
+        Task<Actor?> GetActorById(string id);
         //void AddMovie(Movie movie);
         //void UpdateMovie(Movie movie);
-        void DeleteActor(string id);
-        void Update(Actor actor);
+        Task DeleteActor(string id);
+        Task Update(Actor actor);
     }
 }
