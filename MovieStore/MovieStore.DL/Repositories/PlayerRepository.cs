@@ -1,13 +1,13 @@
-﻿using MovieStore.DL.Interfaces;
-using MovieStore.DL.StaticDB;
-using MovieStore.Models.DTO;
+﻿using FootballClubs.DL.Interfaces;
+using FootballClubs.DL.StaticDB;
+using FootballClubs.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieStore.DL.Repositories
+namespace FootballClubs.DL.Repositories
 {
     //internal class ActorRepository : IActorRepository
     //{

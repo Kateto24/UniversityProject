@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using MovieStore.Models.Requests;
+using FootballClubs.Models.Requests;
 
-namespace MovieStore.Validators
+namespace FootballClubs.Validators
 {
     public class AddMovieRequestValidator : AbstractValidator<AddMovieRequest>
     {

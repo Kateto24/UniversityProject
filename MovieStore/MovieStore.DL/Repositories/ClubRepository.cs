@@ -1,8 +1,8 @@
-﻿using MovieStore.DL.Interfaces;
-using MovieStore.DL.StaticDB;
-using MovieStore.Models.DTO;
+﻿using FootballClubs.DL.Interfaces;
+using FootballClubs.DL.StaticDB;
+using FootballClubs.Models.DTO;
 
-namespace MovieStore.DL.Repositories
+namespace FootballClubs.DL.Repositories
 {
     //[Obsolete]
     //internal class MongoRepository : IMovieRepository

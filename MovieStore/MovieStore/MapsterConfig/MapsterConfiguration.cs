@@ -1,8 +1,8 @@
 ﻿using Mapster;
-using MovieStore.Models.DTO;
-using MovieStore.Models.Requests;
+using FootballClubs.Models.DTO;
+using FootballClubs.Models.Requests;
 
-namespace MovieStore.MapsterConfig
+namespace FootballClubs.MapsterConfig
 {
     public class MapsterConfiguration
     {

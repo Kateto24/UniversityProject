@@ -1,17 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MovieStore.DL.Interfaces;
-using MovieStore.DL.Repositories;
-using MovieStore.DL.Repositories.MongoRepositories;
+using FootballClubs.DL.Interfaces;
+using FootballClubs.DL.Repositories;
+using FootballClubs.DL.Repositories.MongoRepositories;
 
-namespace MovieStore.DL
+namespace FootballClubs.DL
 {
     public static class DependencyInjection
     {
         public static void RegisterRepositories(this IServiceCollection services)
         {
             services
-                .AddSingleton<IMovieRepository, MovieMongoRepository>()
-                .AddSingleton<IActorRepository, ActorMongoRepository>();
+                .AddSingleton<IClubRepository, ClubMongoRepository>()
+                .AddSingleton<IPlayerRepository, PlayerMongoRepository>();
         }
     }
 }
